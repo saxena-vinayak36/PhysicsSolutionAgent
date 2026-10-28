@@ -52,7 +52,7 @@ export default function PhysicsPreview({topic, parameters}:Props) {
       {topic==='incline' && (()=>{
         const angle = Math.min(75,parameters.angle_deg||30)
         const p = (tick*.18)%1
-        const endX=540, endY=278, startX=160, startY=278-(380*Math.tan(angle*Math.PI/180))
+        const endX=540, endY=278, startY=278-(380*Math.tan(angle*Math.PI/180))
         const normY = Math.max(75, startY)
         const bx=160+(endX-160)*p, by=normY+(endY-normY)*p
         return <g><path d={`M 160 ${normY} L ${endX} ${endY} L 160 ${endY} Z`} fill="#223653" stroke="#a0b7d8" strokeWidth="3"/>
@@ -66,7 +66,7 @@ export default function PhysicsPreview({topic, parameters}:Props) {
         const cx=330+Math.sin(tick*2)*Math.sin(theta)*340,cy=100+Math.cos(Math.asin((cx-330)/340))*204
         return <g><line x1="250" x2="410" y1="98" y2="98" stroke="#889bb5" strokeWidth="8"/>
           <path d="M 330 100 L 330 310" stroke="#a5bfd6" strokeDasharray="5 6" opacity=".5"/>
-          <path d="M 330 100 L ${cx} ${cy}" stroke="#b5c4da" strokeWidth="4"/><circle cx={cx} cy={cy} r="20" fill="url(#block)"/>
+          <path d={`M 330 100 L ${cx} ${cy}`} stroke="#b5c4da" strokeWidth="4"/><circle cx={cx} cy={cy} r="20" fill="url(#block)"/>
           <circle cx="330" cy="100" r="6" fill="#e3ebfa"/><text x="330" y="333" fontSize="20" textAnchor="middle" fill="#cbdcf8">T = 2π √(L / g)</text></g>
       })()}
     </svg>
